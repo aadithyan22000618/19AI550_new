@@ -1,65 +1,50 @@
-# Ex.No: 4  Implementation of Kinematic movement -seek behavior in Unity
-### DATE:                                                                            
-### REGISTER NUMBER : 
-### AIM: 
-To write a program to simulate the process of seek behavior in Unity without NavigationMeshAgent. 
-### Algorithm:
-1. Create a New Unity Project by Open the  Unity Hub and create a new 3D Project,Name the project (e.g., SeekBehaviorDemo).
-2. Create the Moving Object
-   In the Hierarchy, right-click → 3D Object → Cube (or Sphere).
-   Rename it to Seeker and Reset its position:Select the Seeker, go to Inspector → Transform → Set Position to (0,0,0).
-3. Create the Target Object
-   Right-click in the Hierarchy → 3D Object → Sphere (or any other shape).
-   Rename it to Target. Move it away from Seeker, e.g., set Position to (5, 0, 5).
-   Select the Target, add a Material, and change the color. (if needed) 
-4. Adding the Seek Behavior Script
-   Create the Script-In the Project Window, go to the Assets folder.
-   Right-click → Create → C# Script.
-5. Write a script for seek behavior and save it
-6. Attach the Script
-   Select Seeker in the Hierarchy - Drag & Drop the SeekBehavior script onto the Inspector Panel.
-   Drag & Drop the Target from the Hierarchy into the "Target" field in the script component.
-12. Run the game 
-13. Stop the program
-    
-### Program:
-```
+Ex.No: 4 Create a player Movement Script in unity
+
+REGISTER NUMBER : 212222230001
+
+AIM:
+To write a program to create a player movement in unity.
+
+Algorithm:
+Create a New Unity Project by Open the Unity Hub and create a new 3D Project,Name the project (e.g., PlayerMovement).
+
+Create the Moving Object In the Hierarchy, right-click → 3D Object → Capsule (or Sphere). Rename it to Player
+
+Adding the Player Movement Behavior Script Create the Script-In the Project Window, go to the Assets folder. Right-click → Create → C# Script.
+
+Write a script for player behavior and save it
+
+Attach the Script Select player in the Hierarchy - Drag & Drop the playerBehavior script onto the Inspector Panel.
+
+Run the game
+
+Stop the program
+
+Program:
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script : MonoBehaviour
+public class Player_movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Transform target;  // The object to seek
-    public float speed = 5f;  // Movement speed
-    void Start()
-    {
-        
-    }
+    public float speed = 5.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (target == null) return;  // Exit if no target is assigned
+void Update()
+{
+    float xdir = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+    float zdir = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-        // Calculate the desired direction
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        // Move the object towards the target
-        transform.position += direction * speed * Time.deltaTime;
-    }
+    transform.Translate(xdir, 0, zdir);
 }
-```
-### Output:
+}
+
+OUTPUT 
+![image](https://github.com/user-attachments/assets/59c9e71a-74b9-41ba-aa45-fae50bdf4933)
+![image](https://github.com/user-attachments/assets/5d1f17b8-7a79-443f-82f0-3dc11a9433ae)
+![image](https://github.com/user-attachments/assets/b45c3d5d-ec3a-4268-8b6e-4e870c712f49)
+![image](https://github.com/user-attachments/assets/a02b6638-9d55-487a-b6c8-3a3b6615510b)
+Result:
+Thus the simple movement behavior was implemented successfully
 
 
 
-
-
-
-
-
-
-### Result:
-Thus the simple seek behavior was implemented successfully.
